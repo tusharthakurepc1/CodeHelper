@@ -2,12 +2,12 @@ package com.StringDataStructure;
 
 public class LongestCommonPrefix {
     public static void main(String[] args) {
-        String[] arr = {"abab","aba",""};
+        String[] arr = {"abab","aba","aba", "aba"};
 
 
-//        System.out.println(helper(arr));
+        System.out.println(helper(arr));
 
-        System.out.println((int)'0');
+//        System.out.println((int)'0');
     }
 
     public static String helper(String arr[]){

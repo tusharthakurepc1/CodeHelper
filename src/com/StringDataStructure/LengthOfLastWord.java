@@ -24,7 +24,6 @@ public class LengthOfLastWord {
             count++;
         }
 
-
         System.out.println(count);
     }
 }

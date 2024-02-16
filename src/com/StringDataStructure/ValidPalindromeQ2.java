@@ -2,7 +2,7 @@ package com.StringDataStructure;
 
 public class ValidPalindromeQ2 {
     public static void main(String[] args) {
-        String str = "abbbasdfsc";
+        String str = "malayalam";
 
         System.out.println(bruteForce(str));
         System.out.println(betterSolution(str));

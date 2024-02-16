@@ -12,20 +12,22 @@ public class Test{
 
     public static void main(String[] args) {
 
-        Map<Integer, String> map = new HashMap<>();
-        map.put(4, "D");
-        map.put(2, "B");
-        map.put(3, "C");
-        map.put(1, "A");
+        int arr[] = {9, 0, 2, 4, 7, 8};
 
-        System.out.println(map);
 
-        for(Map.Entry<Integer, String> data: map.entrySet()){
-            System.out.println(data);
+
+    }
+    public static void helper(int arr[]){
+        int start = 0, end = arr.length-1;
+
+        while(start <= end){
+            int mid = (start + end) / 2;
+
+            if(arr[mid] <= arr[end]){
+                //Right side sorted
+            }
+
         }
-
-
-
     }
 
 

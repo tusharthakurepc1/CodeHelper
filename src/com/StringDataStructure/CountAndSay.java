@@ -2,7 +2,7 @@ package com.StringDataStructure;
 
 public class CountAndSay {
     public static void main(String[] args) {
-        solution(4);
+        solution(7);
     }
 
     public static void solution(int n){
@@ -32,6 +32,7 @@ public class CountAndSay {
 
                 str = new StringBuilder(res);
                 str.append('&');
+                System.out.println(res);
             }
             System.out.println("STR: "+str);
             System.out.println("RES: "+res);

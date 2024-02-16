@@ -4,10 +4,10 @@ import com.BasicLibTCT;
 
 public class FindKRotatedArray {
     public static void main(String[] args) {
-        int arr[]={2,2,2,2,2};
+        int arr[]={9, 10, 19, 0, 2, 4, 7, 8};
 
-//        findRotation(arr);
-        findRotationM2(arr);
+        findRotation(arr);
+//        findRotationM2(arr);            //data and position_in_index
     }
 
     public static void findRotation(int arr[]){     //Work only for unique elements in the array.

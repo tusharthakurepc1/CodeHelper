@@ -7,7 +7,7 @@ import java.util.List;
 public class LeaderInArray {
     public static void main(String[] args) {
 //        Leader in Array : return the element which having all the right most elements smaller.
-        int arr[]={1,2,3,2};
+        int arr[]={1,2,5,3,1};
         List<Integer> res=new ArrayList<>();
 //        bruteForce(arr,res);
         optimalSol(arr,res);
