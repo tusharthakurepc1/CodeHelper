@@ -3,18 +3,40 @@ package com.DynamicProgramming;
 import java.util.Arrays;
 
 public class PartationArrayMinimumSum_2D {
-//    This algorithm is working good for positive int array only.
+//    This algo is working for only some of the test case.
     public static void main(String[] args) {
-        int arr[] = {-36, 36};
+//        int arr[] = {-36, 36};
 //        int arr[] = {2,-1,0,4,-2,-9};
-//        int arr[] = {3,9,7,3};
+        int arr[] = {3,9,7,3};
+
+        int res[] = new int[]{Integer.MAX_VALUE};
 
         int sum = 0;
         for(int i=0;i<arr.length;i++)   sum += arr[i];
         System.out.println("Sum: "+sum);
 
 
-        System.out.println(recursiveSol(arr, arr.length-1, sum, sum));
+//        System.out.println(recursiveSol(arr, arr.length-1, sum, sum));
+        recursiveSolution(arr, 0, 0, sum, res);
+        System.out.println(res[0]);
+    }
+
+    public static void recursiveSolution(int arr[], int ind, int processed, int total_sum, int res[]){
+        if(ind >= arr.length){
+            return;
+        }
+
+
+        int t = Math.abs(processed - (total_sum-processed));
+        if(t != total_sum)
+            res[0] = Math.min(res[0], t);
+
+//        take it case
+        recursiveSolution(arr, ind+1, processed+arr[ind], total_sum, res);
+
+//        leave it case
+        recursiveSolution(arr, ind+1, processed, total_sum, res);
+
     }
 
     public static void solution(int arr[],int total_sum){

@@ -5,31 +5,58 @@ import java.io.CharArrayReader;
 import java.lang.reflect.Array;
 import java.util.*;
 
-
-
-
 public class Test{
 
     public static void main(String[] args) {
-
-        int arr[] = {9, 0, 2, 4, 7, 8};
-
-
-
-    }
-    public static void helper(int arr[]){
-        int start = 0, end = arr.length-1;
-
-        while(start <= end){
-            int mid = (start + end) / 2;
-
-            if(arr[mid] <= arr[end]){
-                //Right side sorted
-            }
-
+        int v = 6, e = 4;
+        int edges[][] = {
+                {5,0},
+                {5,2},
+                {4,0},
+                {4,1},
+                {2,3},
+                {3,1}
+        };
+        List<List<Integer>> adj_list = new ArrayList<>();
+        for(int i=0;i<v;i++){
+            adj_list.add(new ArrayList<>());
         }
+
+        for(int i=0;i<edges.length;i++){
+            adj_list.get(edges[i][0]).add(edges[i][1]);
+        }
+
+
+//        System.out.println(adj_list);
+
+        helper(adj_list);
+
     }
 
+    public static void helper(List<List<Integer>> adj_list){
+        boolean vis[] = new boolean[adj_list.size()];
+
+        for(int i=0;i<vis.length;i++){
+            if(!vis[i]){
+                dfs(adj_list, vis, i);
+            }
+        }
+
+    }
+
+    public static void dfs(List<List<Integer>> adj_list, boolean vis[], int node){
+        vis[node] = true;
+
+//        Traverse all the child
+        for(int el: adj_list.get(node)){
+            if(!vis[el]){
+                dfs(adj_list, vis, el);
+            }
+        }
+
+        System.out.println(node);
+
+    }
 
 
     public static void nextP(int arr[]){
