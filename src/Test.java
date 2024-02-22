@@ -8,28 +8,7 @@ import java.util.*;
 public class Test{
 
     public static void main(String[] args) {
-        int v = 6, e = 4;
-        int edges[][] = {
-                {5,0},
-                {5,2},
-                {4,0},
-                {4,1},
-                {2,3},
-                {3,1}
-        };
-        List<List<Integer>> adj_list = new ArrayList<>();
-        for(int i=0;i<v;i++){
-            adj_list.add(new ArrayList<>());
-        }
 
-        for(int i=0;i<edges.length;i++){
-            adj_list.get(edges[i][0]).add(edges[i][1]);
-        }
-
-
-//        System.out.println(adj_list);
-
-        helper(adj_list);
 
     }
 
@@ -41,6 +20,8 @@ public class Test{
                 dfs(adj_list, vis, i);
             }
         }
+
+
 
     }
 

@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 public class LargestRectangle {
     public static void main(String[] args) {
-        int arr[]={2,1,5,6,2,3,1};
+        int arr[]={2,1,5,6,2,3};
 
 
 //        bruteForce(arr);
@@ -64,6 +64,7 @@ public class LargestRectangle {
                 res[i] = arr.length-1;
             else
                 res[i] = stack.peek()-1;
+
             stack.push(i);
 
         }
@@ -74,16 +75,18 @@ public class LargestRectangle {
     public static void optimalSolution(int arr[]){
         int left_smaller[] = nextLeftSmaller(arr);
         int right_smaller[] = nextRightSmaller(arr);
+        System.out.println(Arrays.toString(left_smaller));
+        System.out.println(Arrays.toString(right_smaller));
 
         int max_area = Integer.MIN_VALUE;
 
         for(int i=0;i<arr.length;i++){
 
             int area = (right_smaller[i] - left_smaller[i] +1) * arr[i];
-
+            System.out.print(area+" ");
             max_area = BasicLibTCT.max(max_area, area);
         }
-
+        System.out.println();
         System.out.println(max_area);
 
     }
