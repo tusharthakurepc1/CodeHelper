@@ -6,7 +6,7 @@ import java.util.Stack;
 
 public class DetectLoopInDirectedGraph {
     public static void main(String[] args) {
-        int adj_matrix[][] = {
+        int edges[][] = {
                 {0,1},
                 {1,2},
                 {2,3},
@@ -20,8 +20,8 @@ public class DetectLoopInDirectedGraph {
             adj_list.add(new ArrayList<>());
         }
 
-        for(int i=0;i<adj_matrix.length;i++){
-            adj_list.get(adj_matrix[i][0]).add(adj_matrix[i][1]);
+        for(int i=0;i<edges.length;i++){
+            adj_list.get(edges[i][0]).add(edges[i][1]);
         }
 
 

@@ -1,6 +1,7 @@
 package com.DynamicProgramming;
 
-import com.sun.xml.internal.stream.XMLInputFactoryImpl;
+
+import java.util.Arrays;
 
 public class PalindromePartitioning2 {
     public static void main(String[] args) {
@@ -18,12 +19,20 @@ public class PalindromePartitioning2 {
 
         System.out.println(recursiveSolution(str) - 1);
 
-        System.out.println(recursiveSolution(str, 0, str.length()-1));
+        int dp_arr[][] = new int[str.length()+1][str.length()+1];
+        for(int temp[]: dp_arr){
+            Arrays.fill(temp, -1);
+        }
+
+        System.out.println(recursiveSolution(str, 0, str.length()-1, dp_arr));
 
     }
 
-    public static int recursiveSolution(String str, int start, int end){
+    public static int recursiveSolution(String str, int start, int end, int dp_arr[][]){
         if(start >= end)    return 0;
+        if(dp_arr[start][end] != -1){
+            return dp_arr[start][end];
+        }
 
         if(isPalindrome(str, start, end)){
             return 0;
@@ -35,14 +44,14 @@ public class PalindromePartitioning2 {
         for(int i=start;i<=end;i++){
 
             if(isPalindrome(str, start, i)){
-                int temp = 1 + recursiveSolution(str, i+1, end);
+                int temp = 1 + recursiveSolution(str, i+1, end, dp_arr);
 
                 mini = Math.min(temp, mini);
             }
 
         }
 
-        return mini;
+        return dp_arr[start][end] = mini;
     }
 
 

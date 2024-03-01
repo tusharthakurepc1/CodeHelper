@@ -9,6 +9,18 @@ public class Test{
 
     public static void main(String[] args) {
 
+        Map<Integer, Integer> map = new HashMap<>();
+
+        map.put(1, 100);
+        map.put(2, 100);
+        map.put(3, 100);
+        map.put(4, 100);
+
+        System.out.println(map);
+
+        map.forEach((a, b)->{
+            System.out.println(a +" "+ b);
+        });
 
     }
 

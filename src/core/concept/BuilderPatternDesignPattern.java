@@ -5,7 +5,6 @@ public class BuilderPatternDesignPattern {
         Person p1 = new PersonBuilder().setId(1001).setEmail1("tushar1@gmail.com").setName("Tushar").getPerson();
         System.out.println(p1);
 
-
     }
 }
 
