@@ -7,29 +7,55 @@ import java.util.List;
 public class FindEventualSafeNodes {
     public static void main(String[] args) {
         int adj_list[][] = {
+                {1, 2},
+                {2, 3},
+                {5},
+                {0},
+                {5},
                 {},
-                {0, 2, 3, 4},
-                {3},
-                {4},
                 {}
         };
 
-//        safeNodes(adj_list);
-        System.out.println(detectCycleUndirected(adj_list, new boolean[adj_list.length], 1));
-
+        safeNodes(adj_list);
     }
+
+
 
     public static void safeNodes(int adj_list[][]){
         List<Integer> res = new ArrayList<>();
 
-        for(int i=0;i<adj_list.length;i++){
-            if(!detectCycleUndirected(adj_list, new boolean[adj_list.length], i)){
+        for(int i=0;i< adj_list.length;i++){
+            boolean visited[] = new boolean[adj_list.length];
+            boolean path[] = new boolean[adj_list.length];
+
+            if(!dfs(adj_list, i, path, visited)){
                 res.add(i);
+            }
+
+        }
+
+        System.out.println(res);
+    }
+
+    public static boolean dfs(int adj_list[][], int curr, boolean path[], boolean visited[]){
+
+        path[curr] = true;
+        visited[curr] = true;
+
+        //Explore all the neighbours
+        for(int el: adj_list[curr]){
+            if(visited[el] && path[el]){
+                return true;
+            }
+            if(!visited[el]){
+                if(dfs(adj_list, el, path, visited)){
+                    return true;
+                }
             }
         }
 
-        Collections.sort(res);
-        System.out.println(res);
+        path[curr] = false;
+        return false;
     }
 
     public static boolean detectCycleUndirected(int adj_list[][], boolean visited[], int ind){

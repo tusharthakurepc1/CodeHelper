@@ -1,5 +1,6 @@
-package com.GraphDataStructure;
+package com.GraphDataStructure.ShortestPath;
 
+import com.GraphDataStructure.Pair;
 import java.util.*;
 
 public class ShortestPathInUndirectedGraph_BFS {
