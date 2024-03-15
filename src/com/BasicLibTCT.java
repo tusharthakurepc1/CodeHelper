@@ -122,8 +122,24 @@ public class BasicLibTCT {
         return combinations;
     }
 
+    public static void permutations(int arr[], int ind){
+        if(ind >= arr.length){
+            System.out.println(Arrays.toString(arr));
+            return;
+        }
+
+        //Go for all the possibilities
+        for(int i=ind;i<arr.length;i++){
+            swap(arr, i, ind);
+
+            permutations(arr, ind + 1);
+
+            swap(arr, i, ind);
+        }
+    }
+
 
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(factorial(10)));
+
     }
 }
