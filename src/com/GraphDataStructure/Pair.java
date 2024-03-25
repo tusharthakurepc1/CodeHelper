@@ -17,7 +17,6 @@ public class Pair {
     }
 }
 
-
 class GraphNode{
     public int value;
     public List<GraphNode> neighbors;
