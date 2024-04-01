@@ -1,5 +1,6 @@
 package com.SlidingWindow;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
@@ -7,35 +8,73 @@ import java.util.TreeSet;
 public class LongestSubStringWithoutRepeatingChar {
     public static void main(String[] args) {
 
-        String str = "pwwkew";
+        String str = "cddbzabcd";
 
-        //expected ans is 3 "abc"
 
+        bruteForce(str);
         optimalSolution(str);
+
 
     }
 
-    public static void solution(String str){
-        int max = 0;
+    //Time complexity: O(n)
+    //Space complexity: O(170)  constant
+    public static void optimalSolution(String str){
 
-        for(int i=0;i<str.length();i++){
+        int left = 0;
+        int hash_arr[] = new int[170];
+        Arrays.fill(hash_arr, -1);
+        int maxi = 0;
 
-            Set<Character> temp = new HashSet<>();
-            for(int j=i;j<str.length();j++){
+        for(int right=0; right<str.length(); right++){
 
-                temp.add(str.charAt(j));
+            if(hash_arr[(int)str.charAt(right)] == -1){
+                hash_arr[(int)str.charAt(right)] = right;
+            }
+            else{
+                int ind = hash_arr[(int)str.charAt(right)];
+                hash_arr[(int)str.charAt(right)] = right;
 
+                if(ind >= left){
+                    left = ind + 1;
+                }
             }
 
-            max = Math.max(max, temp.size());
+            maxi = Math.max(maxi, right-left + 1);
 
         }
 
-        System.out.println(max);
+        System.out.println(maxi);
 
     }
 
-    public static void optimalSolution(String str){
+
+    //Time complexity: O(N^2)
+    // Space Complexity: O(170) Constant
+    public static void bruteForce(String str){
+        int maxi = 0;
+
+        for(int i=0; i<str.length(); i++){
+            int hash_arr[] = new int[170];
+
+            for(int j=i; j<str.length(); j++){
+                if(hash_arr[(int)str.charAt(j)] == 1){
+                    break;
+                }
+                hash_arr[(int)str.charAt(j)] = 1;
+
+                maxi = Math.max(maxi, j-i+1);
+
+            }
+
+        }
+
+        System.out.println(maxi);
+
+    }
+
+
+    public static void ownSol(String str){
         int left = 0, right = 0;
         int max = 0;
         Set<Character> set = new HashSet<>();
