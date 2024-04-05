@@ -15,7 +15,7 @@ public class FruitsIntoBaskets {
     }
 
     //Time complexity: O(2n)
-    //Space complexity: O(k)
+    //Space complexity: O(k+1)
     public static void optimalSolution(int arr[], int k){
         Map<Integer, Integer> map = new HashMap<>();
         int left = 0;
@@ -51,7 +51,7 @@ public class FruitsIntoBaskets {
     }
 
     //Time complexity: O(n^2)
-    //Space complexity: O(k)
+    //Space complexity: O(k+1)
     public static void bruteForce(int arr[], int k){
         int box = k;
         int max_len = 0;
