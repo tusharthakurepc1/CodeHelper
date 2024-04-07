@@ -1,11 +1,11 @@
-package company.nammayatri;
+package company;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Problem1 {
+public class Problem1NammaYatri {
     public static void main(String[] args) {
         int arr[] = {4, 4, 1, 4, 13, 8, 8, 8, 0, 8, 14, 9, 15, 11, -1, 12, 15, 22, 22, 22, 22, 22, 21};
 
