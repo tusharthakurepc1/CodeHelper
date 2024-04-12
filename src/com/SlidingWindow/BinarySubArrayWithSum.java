@@ -10,32 +10,55 @@ public class BinarySubArrayWithSum {
     }
 
     public static void optimalSolution(int arr[], int target){
+        int sum = 0;
         int left = 0;
         int count = 0;
-        int ones = 0;
 
         for(int right=0; right<arr.length; right++){
 
             if(arr[right] == 1){
-                ones += 1;
-            }
+                //for value is one
 
-            while(ones > target){
-                if(arr[left] == 1){
-                    ones -= 1;
-                    break;
+                if(sum < target){
+                    //increase the window to the right side
+                    sum += arr[right];
+                    if(sum == target){
+                        count++;
+                        System.out.println(left+" "+right);
+                    }
                 }
-                left++;
+                else{
+                    sum += arr[right];
+
+                    //shrink the window to the left side and count ans when equals to the target
+                    while(left <= right && sum >= target){
+                        if(sum == target){
+                            count++;
+                            System.out.println(left+" "+right);
+                        }
+                        sum -= arr[left];
+
+                        left++;
+                    }
+
+                }
+
+            }
+            else{
+                //for value in zero
+                if(sum == target){
+                    count++;
+                    System.out.println(left+" "+right);
+                }
             }
 
-            if(target == ones){
-                count++;
-            }
 
         }
 
 
+
         System.out.println(count);
+
     }
 
 

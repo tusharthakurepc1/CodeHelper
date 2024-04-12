@@ -4,7 +4,7 @@ import sun.reflect.generics.tree.Tree;
 
 public class ConstructTree {
     public static void main(String[] args) {
-        inorder(tree3());
+        inorder(tree1());
     }
 
     public static TreeNode tree1(){
@@ -12,7 +12,6 @@ public class ConstructTree {
         root.left =new TreeNode(2);
         root.left.left =new TreeNode(4);
         root.left.right =new TreeNode(6);
-        root.right =new TreeNode(3);
         root.right =new TreeNode(3);
         root.right.left =new TreeNode(5);
         root.right.right =new TreeNode(7);

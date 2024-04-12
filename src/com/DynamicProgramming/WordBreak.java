@@ -1,50 +1,87 @@
 package com.DynamicProgramming;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class WordBreak {
     public static void main(String[] args) {
-        int adj_matrix[][] = {
-                {0, 2, -1, -1},
-                {1, 0, 3, -1},
-                {-1, -1, 0, -1},
-                {3, 5, 4, 0}
-        };
-        int n = adj_matrix.length;
+        String str = "catsandog";
+        String key[] = {"cats","dog","sand","and","cat"};
 
-        floydWarshallAlgo(adj_matrix, n);
+        HashMap<String, Boolean> map = new HashMap<>();
+        for(int i=0; i< key.length; i++)    map.put(key[i], true);
+
+        int dp_arr[] = new int[str.length()+1];
+        Arrays.fill(dp_arr, -1);
+
+        System.out.println(wordBreakBetter(str, 0, map, dp_arr));
 
     }
 
-    public static void floydWarshallAlgo(int adj_matrix[][], int n){
-
-        for(int i=0;i<n;i++){
-            for(int j=0;j<n;j++){
-                if(adj_matrix[i][j] == -1)  adj_matrix[i][j] = (int)1e9;
-            }
+    public static int wordBreakBetter(String str, int ind, HashMap<String, Boolean> map, int dp_arr[]){
+        if(ind == str.length()){
+            return 1;
+        }
+        if(dp_arr[ind] != -1){
+            return dp_arr[ind];
         }
 
-        for(int v=0;v<n;v++){
-            for(int i=0;i<n;i++){
-                for(int j=0;j<n;j++){
+        for(int i=ind;i<=str.length();i++){
 
-                    adj_matrix[i][j] = Math.min(adj_matrix[i][j], adj_matrix[i][v] + adj_matrix[v][j]);
-
+            String sub_str = str.substring(ind, i);
+            if(map.containsKey(sub_str)){
+                int temp_rs = wordBreakBetter(str, i, map,dp_arr);
+                if(temp_rs == 1){
+                    dp_arr[ind] = 1;
+                    return 1;
                 }
             }
         }
 
-        for(int i=0;i<n;i++){
-            for(int j=0;j<n;j++){
-                if(adj_matrix[i][j] == (int)1e9)  adj_matrix[i][j] = -1;
-            }
-        }
-
-
-        for(int i=0;i<n;i++){
-            System.out.println(Arrays.toString(adj_matrix[i]));
-        }
-
+        return dp_arr[ind] = 0;
     }
+
+
+//    public static int wordBreakBetter(String str, int ind, HashMap<String, Boolean> map, int dp_arr[][]){
+//        if(ind == str.length()){
+//            return 1;
+//        }
+//
+//        for(int i=ind;i<=str.length();i++){
+//            if(dp_arr[ind][i] != -1){
+//                return dp_arr[ind][i];
+//            }
+//
+//            String sub_str = str.substring(ind, i);
+//            if(map.containsKey(sub_str)){
+//                int temp_rs = dp_arr[ind][i] = wordBreakBetter(str, i, map,dp_arr);
+//                if(temp_rs == 1){
+//                    return 1;
+//                }
+//            }
+//        }
+//
+//        return 0;
+//    }
+
+    public static boolean wordBreak(String str, int ind, HashMap<String, Boolean> map){
+        if(ind == str.length()){
+            return true;
+        }
+
+        boolean res = false;
+        for(int i=ind;i<=str.length();i++){
+
+            String sub_str = str.substring(ind, i);
+            if(map.containsKey(sub_str)){
+                res = res || wordBreak(str, i, map);
+            }
+
+        }
+
+        return res;
+    }
+
+
+
 }
