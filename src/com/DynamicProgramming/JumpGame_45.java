@@ -1,11 +1,12 @@
 package com.DynamicProgramming;
 
+import java.util.Arrays;
+
 public class JumpGame_45 {
     public static void main(String[] args) {
         int arr[] = {2,3,0,1,4};
 
         System.out.println(recursiveSolution(arr, 0));
-
     }
 
     public static int recursiveSolution(int arr[], int ind){
@@ -47,4 +48,6 @@ public class JumpGame_45 {
         return dp_arr[ind] = mini + 1;
 
     }
+
+
 }
